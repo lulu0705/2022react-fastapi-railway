@@ -13,6 +13,9 @@ app = FastAPI(
     description="This API was developed for teaching Fast API",
     version="0.0.1",
     terms_of_service="http://localhost:5000",
+    docs_url='/api/docs',
+    redoc_url='/api/redoc',
+    openapi_url='/api/openapi.json'
 )
 app.include_router(card.router)
 app.include_router(user.router)
