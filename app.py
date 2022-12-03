@@ -22,6 +22,12 @@ app.include_router(user.router)
 app.include_router(like.router)
 app.include_router(comment.router)
 
+
+@app.get("/")
+def root():
+    return {"title": 'HELLO'}
+
+    
 if __name__ == "__main__":
     uvicorn.run("app:app", port= 5000, reload=True)
 
