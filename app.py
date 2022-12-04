@@ -1,8 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# from router import product, user
-
 from router import card, user, like, comment
 from db import models
 from db.database import engine
