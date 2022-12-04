@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
 
 origins = [
-    'https://2022react-react-railway-production.up.railway.app/',
+    'https://2022react-react-railway-production.up.railway.app',
 ]
 
 app.add_middleware(
