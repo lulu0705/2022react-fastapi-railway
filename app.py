@@ -12,7 +12,6 @@ app = FastAPI(
     title="Yummy Choco API",
     description="This API was developed for teaching Fast API",
     version="0.0.1",
-    terms_of_service="http://localhost:5000",
     docs_url='/api/docs',
     redoc_url='/api/redoc',
     openapi_url='/api/openapi.json'
@@ -27,7 +26,7 @@ app.include_router(comment.router)
 def root():
     return {"title": 'HELLO'}
 
-    
+
 if __name__ == "__main__":
     uvicorn.run("app:app", port= 5000, reload=True)
 
