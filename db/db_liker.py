@@ -7,7 +7,7 @@ from sqlalchemy.exc import IntegrityError
 from db.models import DbLike
 
 
-def create(db: Session, request: LikeRequestSchema) -> DbLike:
+def create(db: Session, request: LikeRequestSchema):
     new_like = DbLike(
         person_id=request.person_id,
         person_name=request.person_name,
@@ -24,7 +24,7 @@ def create(db: Session, request: LikeRequestSchema) -> DbLike:
         raise HTTPException(status_code=400, detail=f"{exc}".split('\n')[0])
 
 
-def get_all(db: Session) -> list[DbLike]:
+def get_all(db: Session):
     like = db.query(DbLike).all()
     if not like:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
@@ -32,7 +32,7 @@ def get_all(db: Session) -> list[DbLike]:
     return like
 
 
-def get_like_by_id(like_id: int, db: Session) -> DbLike:
+def get_like_by_id(like_id: int, db: Session):
     like = db.query(DbLike).filter(DbLike.id == like_id).first()
     if not like:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,

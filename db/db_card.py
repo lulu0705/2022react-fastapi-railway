@@ -24,7 +24,7 @@ def db_feed(db: Session):
     db.commit()
     return db.query(DbCard).all()
 
-def create(db: Session, request: CardRequestSchema) -> DbCard:
+def create(db: Session, request: CardRequestSchema):
     new_card = DbCard(
         title = request.title,
         author = request.author,
@@ -44,7 +44,7 @@ def create(db: Session, request: CardRequestSchema) -> DbCard:
 # def get_all(db: Session) -> list[DbCard]:
 #     return db.query(DbCard).all()
 
-def get_all(db: Session) -> list[DbCard]:
+def get_all(db: Session):
     cards = db.query(DbCard).all()
     if not cards:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
@@ -59,7 +59,7 @@ def get_all(db: Session) -> list[DbCard]:
 #     return card
 
 
-def get_card_by_id(card_id: int, db: Session) -> DbCard:
+def get_card_by_id(card_id: int, db: Session):
     card = db.query(DbCard).filter(DbCard.id == card_id).first()
     if not card:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,

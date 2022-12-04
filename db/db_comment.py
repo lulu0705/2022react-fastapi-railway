@@ -7,7 +7,7 @@ from sqlalchemy.exc import IntegrityError
 from db.models import DbComment
 
 
-def create(db: Session, request: CommentRequestSchema) -> DbComment:
+def create(db: Session, request: CommentRequestSchema):
     new_comment = DbComment(
         person_id=request.person_id,
         person_name=request.person_name,
@@ -24,7 +24,7 @@ def create(db: Session, request: CommentRequestSchema) -> DbComment:
         raise HTTPException(status_code=400, detail=f"{exc}".split('\n')[0])
 
 
-def get_all(db: Session) -> list[DbComment]:
+def get_all(db: Session):
     comment = db.query(DbComment).all()
     if not comment:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
@@ -32,7 +32,7 @@ def get_all(db: Session) -> list[DbComment]:
     return comment
 
 
-def get_comment_by_id(comment_id: int, db: Session) -> DbComment:
+def get_comment_by_id(comment_id: int, db: Session):
     comment = db.query(DbComment).filter(DbComment.id == comment_id).first()
     if not comment:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
